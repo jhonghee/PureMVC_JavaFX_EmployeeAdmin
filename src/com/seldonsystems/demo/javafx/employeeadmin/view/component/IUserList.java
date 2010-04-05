@@ -5,7 +5,9 @@
 
 package com.seldonsystems.demo.javafx.employeeadmin.view.component;
 
+import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
 import com.seldonsystems.demo.javafx.employeeadmin.view.UserListMediator;
+import java.util.List;
 
 /**
  *
@@ -14,4 +16,6 @@ import com.seldonsystems.demo.javafx.employeeadmin.view.UserListMediator;
 public interface IUserList {
 
     public void setMediator(UserListMediator mediator);
+
+    public void setUsers(List<UserVO> users);
 }

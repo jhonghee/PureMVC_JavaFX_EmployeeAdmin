@@ -5,6 +5,7 @@
 
 package com.seldonsystems.demo.javafx.employeeadmin.view;
 
+import com.seldonsystems.demo.javafx.employeeadmin.model.UserProxy;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.IUserList;
 import org.puremvc.java.multicore.interfaces.INotification;
 import org.puremvc.java.multicore.patterns.mediator.Mediator;
@@ -16,6 +17,8 @@ import org.puremvc.java.multicore.patterns.mediator.Mediator;
 public class UserListMediator extends Mediator {
 
     public static final String LOOKUP_ID = "userList";
+
+    private UserProxy userProxy;
 
     public UserListMediator(Object viewComponent) {
         super(NAME, viewComponent);
@@ -38,6 +41,10 @@ public class UserListMediator extends Mediator {
     @Override
     public void onRegister() {
         getUserList().setMediator(this);
+        
+        userProxy = (UserProxy) getFacade().retrieveProxy(UserProxy.NAME);
+        getUserList().setUsers(userProxy.getUsers());
+
     }
 
     public void onDelete() {

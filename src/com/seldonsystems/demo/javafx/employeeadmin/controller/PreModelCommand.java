@@ -29,6 +29,9 @@ class PreModelCommand extends SimpleCommand {
 
         // Populate it with dummy data
         userProxy.addItem( new UserVO("lstooge", "Larry", "Stooge", "larry@stooges.com", "ijk456", DeptEnum.ACCT));
+
+        // register it
+        getFacade().registerProxy(userProxy);
         
     }
 
