@@ -3,32 +3,39 @@
  *
  * Created on Apr 1, 2010, 3:39:33 PM
  */
-
 package com.seldonsystems.demo.javafx.employeeadmin;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.text.Text;
-import javafx.scene.text.Font;
+import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
+import javafx.scene.layout.VBox;
+import javafx.geometry.VPos;
+import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserList;
 
 /**
- * @author remotejpark
+ * @author Jhonghee Park @ Seldon Systems, Inc.
  */
+var stage: Stage = Stage {
+            title: "PureMVC JavaFX Demo: EmployeeAdmin"
+            scene: Scene {
+                width: 800
+                height: 600
+                content: [
+                    VBox {
+                        height: bind stage.height
+                        width: bind stage.width
+                        vpos: VPos.CENTER
+                        spacing: 20
+                        content: [
+                            UserList {
+                               id: "userList"
+                            }
 
-Stage {
-    title: "PureMVC EmployeeAdmin JavaFX Demo"
-    scene: Scene {
-        width: 250
-        height: 80
-        content: [
-            Text {
-                font : Font {
-                    size : 16
-                }
-                x: 10
-                y: 30
-                content: "JavaFX Demo"
+                        ]
+                    }
+                ]
             }
-        ]
-    }
-}
+        }
+var applicationFacade: ApplicationFacade = ApplicationFacade.getInstance(ApplicationFacade.NAME);
+
+applicationFacade.startup(stage.scene);
