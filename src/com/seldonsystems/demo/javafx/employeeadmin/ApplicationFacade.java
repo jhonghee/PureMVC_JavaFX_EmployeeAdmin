@@ -24,6 +24,8 @@ public class ApplicationFacade extends Facade {
     public static final String DELETE_USER = "deleteUser";
     public static final String NEW_USER = "newUser";
 
+    public static final String USER_ADDED = "userAdded";
+    public static final String USER_UPDATED = "userUpdated";
     public static final String USER_DELETED = "userDeleted";
     public static final String USER_SELECTED = "userSelected";
     public static final String CANCEL_SELECTED = "cancelSelected";

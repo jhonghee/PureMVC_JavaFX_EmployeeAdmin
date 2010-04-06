@@ -39,7 +39,7 @@ public class UserProxy extends Proxy {
             UserVO aUser = getUsers().get(i);
             if(aUser.getUsername().equals(userVO.getUsername())) {
                 getUsers().remove(aUser);
-                getUsers().add(i, aUser);
+                getUsers().add(i, userVO);
                 break;
             }
         }

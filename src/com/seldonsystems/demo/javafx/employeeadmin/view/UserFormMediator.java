@@ -61,4 +61,16 @@ public class UserFormMediator extends Mediator {
     public void onCancel() {
         sendNotification(ApplicationFacade.CANCEL_SELECTED);
     }
+
+    public void onAdd(UserVO user) {
+        userProxy.addItem(user);
+        sendNotification(ApplicationFacade.USER_ADDED, user);
+        getUserForm().reset();
+    }
+
+    public void onUpdate(UserVO user) {
+        userProxy.updateItem(user);
+        sendNotification(ApplicationFacade.USER_UPDATED, user);
+        getUserForm().reset();
+    }
 }

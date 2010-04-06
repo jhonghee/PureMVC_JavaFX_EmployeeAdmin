@@ -129,6 +129,7 @@ public class UserForm extends CustomNode, IUserForm {
                         }
                         usernameField = TextBox {
                                 text:bind username with inverse
+                                disable: bind if( mode == IUserForm.MODE_EDIT ) true else false
                             }
                         // Password
                         Label {
@@ -168,6 +169,22 @@ public class UserForm extends CustomNode, IUserForm {
                             text: bind if (mode == IUserForm.MODE_ADD) "Add User" else "Update Profile"
                             disable: bind disableSubmit(username, password, confirmed, department)
                             action: function () {
+                                user = new UserVO(
+                                    usernameField.text,
+                                    fnameField.text,
+                                    lnameField.text,
+                                    emailField.text,
+                                    passwordField.text,
+                                    DeptEnum.getEnumByLabel(departmentField.selectedItem as String)
+                                );
+
+                                if( mode == IUserForm.MODE_ADD) {
+                                    mediator.onAdd(user);
+                                }
+                                else {
+                                    mediator.onUpdate(user);
+                                }
+
 
                             }
                         }
