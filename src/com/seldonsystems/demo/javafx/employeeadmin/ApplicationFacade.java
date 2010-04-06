@@ -26,6 +26,7 @@ public class ApplicationFacade extends Facade {
 
     public static final String USER_DELETED = "userDeleted";
     public static final String USER_SELECTED = "userSelected";
+    public static final String CANCEL_SELECTED = "cancelSelected";
 
     // Constructor
     private ApplicationFacade(String key) {

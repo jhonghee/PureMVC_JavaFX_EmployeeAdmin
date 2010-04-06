@@ -22,6 +22,8 @@ import javafx.geometry.HPos;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IUserList;
+import javafx.ext.swing.SwingScrollPane;
+import javax.swing.ListSelectionModel;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -30,6 +32,7 @@ public class UserList extends CustomNode, IUserList {
 
     // Refs to view components
     var userListNode: VBox;
+    var swingTable:XSwingTable;
     // Mediators and Models
     var mediator: UserListMediator;
     var users: Object[];
@@ -44,6 +47,10 @@ public class UserList extends CustomNode, IUserList {
 
     override public function setUsers(users: List): Void {
         this.users = users.toArray();
+    }
+
+    override public function deSelect(): Void {
+        swingTable.getJTable().clearSelection();
     }
 
     override protected function create(): Node {
@@ -63,32 +70,34 @@ public class UserList extends CustomNode, IUserList {
                         }
                     ]
                 }
-                XSwingTable {
-                    tableModel: ObjectSequenceTableModel {
-                        override function transformEntry(entry)                                             {
-                            def userVO: UserVO = entry as UserVO;
-                            return Row {
-                                        cells: [
-                                            StringCell { value: bind userVO.getUsername() }
-                                            StringCell { value: bind userVO.getFname() }
-                                            StringCell { value: bind userVO.getLname() }
-                                            StringCell { value: bind userVO.getEmail() }
-                                            StringCell { value: bind userVO.getDepartment().getLabel() }
-                                        ]
-                                    }
+                SwingScrollPane {
+                    view: swingTable = XSwingTable {
+                        tableModel: ObjectSequenceTableModel {
+                            override function transformEntry(entry)                                               {
+                                def userVO: UserVO = entry as UserVO;
+                                return Row {
+                                            cells: [
+                                                StringCell { value: bind userVO.getUsername() }
+                                                StringCell { value: bind userVO.getFname() }
+                                                StringCell { value: bind userVO.getLname() }
+                                                StringCell { value: bind userVO.getEmail() }
+                                                StringCell { value: bind userVO.getDepartment().getLabel() }
+                                            ]
+                                        }
+                            }
+                            columnLabels: ["Username", "First Name", "Last Name", "Email", "Department"]
+                            sequence: bind users;
                         }
-                        columnLabels: ["Username", "First Name", "Last Name", "Email", "Department"]
-                        sequence: bind users;
-                    }
-                    preferredColumnWidths: [100, 100, 100, 200, 100]
-                    rowSelectionMode: ListSelectionMode.SINGLE_SELECTION
-                    onSelectedRowsChanged: function (selected: Integer[]) {
-                        if (sizeof selected > 0) {
-                            disableDelete = false;
-                            selectedIndex = selected[0];
-                            mediator.onSelect(users[selectedIndex] as UserVO);
-                        } else {
-                            disableDelete = true;
+                        preferredColumnWidths: [100, 100, 100, 200, 100]
+                        rowSelectionMode: ListSelectionMode.SINGLE_SELECTION
+                        onSelectedRowsChanged: function (selected: Integer[]) {
+                            if (sizeof selected > 0) {
+                                disableDelete = false;
+                                selectedIndex = selected[0];
+                                mediator.onSelect(users[selectedIndex] as UserVO);
+                            } else {
+                                disableDelete = true;
+                            }
                         }
                     }
                 }

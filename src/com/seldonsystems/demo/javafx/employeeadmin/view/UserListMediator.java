@@ -35,11 +35,14 @@ public class UserListMediator extends Mediator {
         if( note.equals(ApplicationFacade.USER_DELETED)) {
             getUserList().setUsers(userProxy.getUsers());
         }
+        else if( note.equals(ApplicationFacade.CANCEL_SELECTED)) {
+            getUserList().deSelect();
+        }
     }
 
     @Override
     public String[] listNotificationInterests() {
-        String[] interests = {ApplicationFacade.USER_DELETED};
+        String[] interests = {ApplicationFacade.USER_DELETED, ApplicationFacade.CANCEL_SELECTED};
         return interests;
     }
 

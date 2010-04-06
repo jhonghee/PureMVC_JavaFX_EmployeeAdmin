@@ -73,6 +73,13 @@ public class UserForm extends CustomNode, IUserForm {
 
     override public function reset () : Void {
         user = null;
+        username = "";
+        fname = "";
+        lname = "";
+        email = "";
+        password = "";
+        confirmed = "";
+        department = DeptEnum.NONE_SELECTED;
         departmentField.selectItem(DeptEnum.NONE_SELECTED.getLabel());
     }
 
@@ -169,7 +176,8 @@ public class UserForm extends CustomNode, IUserForm {
                             text: "Cancel"
                             disable: bind if( user == null ) true else false
                             action: function () {
-
+                                reset();
+                                mediator.onCancel();
                             }
                         }
                     ]

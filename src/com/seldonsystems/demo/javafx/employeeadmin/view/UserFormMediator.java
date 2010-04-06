@@ -58,5 +58,7 @@ public class UserFormMediator extends Mediator {
         
     }
 
-
+    public void onCancel() {
+        sendNotification(ApplicationFacade.CANCEL_SELECTED);
+    }
 }

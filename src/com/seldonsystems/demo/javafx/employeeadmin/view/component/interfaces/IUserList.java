@@ -18,4 +18,6 @@ public interface IUserList {
     public void setMediator(UserListMediator mediator);
 
     public void setUsers(List<UserVO> users);
+
+    public void deSelect();
 }
