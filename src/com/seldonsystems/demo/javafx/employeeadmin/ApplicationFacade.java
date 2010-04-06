@@ -22,8 +22,10 @@ public class ApplicationFacade extends Facade {
     // Notification name constants
     public static final String STARTUP = "startUp";
     public static final String DELETE_USER = "deleteUser";
+    public static final String NEW_USER = "newUser";
 
     public static final String USER_DELETED = "userDeleted";
+    public static final String USER_SELECTED = "userSelected";
 
     // Constructor
     private ApplicationFacade(String key) {

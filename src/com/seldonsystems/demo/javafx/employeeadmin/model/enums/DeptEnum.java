@@ -5,6 +5,9 @@
 
 package com.seldonsystems.demo.javafx.employeeadmin.model.enums;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  *
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -18,8 +21,14 @@ public enum DeptEnum {
     SHIPPING ("Shipping", 3),
     QC ("Quality Control", 4);
 
-    private String label;
+    private static final Map<String, DeptEnum> enumMap = new TreeMap<String, DeptEnum>();
+    static {
+        for (DeptEnum dept : values()) {
+            enumMap.put(dept.getLabel(), dept);
+        }
+    }
 
+    private String label;
     private int value;
 
     private DeptEnum(String label, int value) {
@@ -35,5 +44,11 @@ public enum DeptEnum {
         return value;
     }
 
-    
+    public static String[] getLabels() {
+        return enumMap.keySet().toArray(new String[enumMap.size()]);
+    }
+
+    public static DeptEnum getEnumByLabel(String label) {
+        return enumMap.get(label);
+    }
 }

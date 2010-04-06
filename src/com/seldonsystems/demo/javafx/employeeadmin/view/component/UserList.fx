@@ -20,19 +20,23 @@ import java.util.List;
 import org.jfxtras.ext.swing.table.ListSelectionMode;
 import javafx.geometry.HPos;
 import javafx.scene.control.Label;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IUserList;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
 public class UserList extends CustomNode, IUserList {
 
-    var selectedIndex: Integer = -1;
-    var disableDelete: Boolean = true;
+    // Refs to view components
+    var userListNode: VBox;
+    // Mediators and Models
     var mediator: UserListMediator;
     var users: Object[];
-    var userListNode: VBox;
+    // Binding variables
+    var disableDelete: Boolean = true;
+    // States
+    var selectedIndex: Integer = -1;
 
     override public function setMediator(mediator: UserListMediator): Void {
         this.mediator = mediator;
@@ -53,7 +57,7 @@ public class UserList extends CustomNode, IUserList {
                     content: [
                         Label {
                             font: Font {
-                                size:12
+                                size: 12
                             }
                             text: "Users"
                         }
@@ -61,7 +65,7 @@ public class UserList extends CustomNode, IUserList {
                 }
                 XSwingTable {
                     tableModel: ObjectSequenceTableModel {
-                        override function transformEntry(entry)                                         {
+                        override function transformEntry(entry)                                             {
                             def userVO: UserVO = entry as UserVO;
                             return Row {
                                         cells: [

@@ -7,7 +7,7 @@ package com.seldonsystems.demo.javafx.employeeadmin.view;
 import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
 import com.seldonsystems.demo.javafx.employeeadmin.model.UserProxy;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IUserList;
+import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IUserForm;
 import org.puremvc.java.multicore.interfaces.INotification;
 import org.puremvc.java.multicore.patterns.mediator.Mediator;
 
@@ -15,52 +15,48 @@ import org.puremvc.java.multicore.patterns.mediator.Mediator;
  *
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
-public class UserListMediator extends Mediator {
+public class UserFormMediator extends Mediator {
 
-    public static final String LOOKUP_ID = "userList";
+    public static final String LOOKUP_ID = "userForm";
+    
     private UserProxy userProxy;
 
-    public UserListMediator(Object viewComponent) {
+    public UserFormMediator(Object viewComponent) {
         super(LOOKUP_ID, viewComponent);
     }
 
-    private IUserList getUserList() {
-        return (IUserList) getViewComponent();
+    private IUserForm getUserForm() {
+        return (IUserForm) getViewComponent();
     }
 
     @Override
     public void handleNotification(INotification notification) {
         String note = notification.getName();
 
-        if( note.equals(ApplicationFacade.USER_DELETED)) {
-            getUserList().setUsers(userProxy.getUsers());
+        if( note.equals(ApplicationFacade.NEW_USER)) {
+            getUserForm().setUser((UserVO) notification.getBody(), IUserForm.MODE_ADD);
+        }
+        else if( note.equals(ApplicationFacade.USER_DELETED)) {
+            getUserForm().reset();
+        }
+        else if( note.equals(ApplicationFacade.USER_SELECTED)) {
+            getUserForm().setUser((UserVO) notification.getBody(), IUserForm.MODE_EDIT);
         }
     }
 
     @Override
     public String[] listNotificationInterests() {
-        String[] interests = {ApplicationFacade.USER_DELETED};
+        String[] interests = {ApplicationFacade.NEW_USER, ApplicationFacade.USER_DELETED, ApplicationFacade.USER_SELECTED};
         return interests;
     }
 
     @Override
     public void onRegister() {
-        getUserList().setMediator(this);
+        getUserForm().setMediator(this);
 
         userProxy = (UserProxy) getFacade().retrieveProxy(UserProxy.NAME);
-        getUserList().setUsers(userProxy.getUsers());
-
+        
     }
 
-    public void onDelete(UserVO selected) {
-        sendNotification(ApplicationFacade.DELETE_USER, selected);
-    }
 
-    public void onNew() {
-        sendNotification(ApplicationFacade.NEW_USER, new UserVO());
-    }
-
-    public void onSelect(UserVO selected) {
-        sendNotification(ApplicationFacade.USER_SELECTED, selected);
-    }
 }
