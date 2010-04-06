@@ -11,19 +11,22 @@ import com.seldonsystems.demo.javafx.employeeadmin.view.UserListMediator;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
-import javafx.geometry.HPos;
 import org.jfxtras.ext.swing.XSwingTable;
 import org.jfxtras.ext.swing.table.ObjectSequenceTableModel;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
 import org.jfxtras.ext.swing.table.Row;
 import org.jfxtras.ext.swing.table.StringCell;
 import java.util.List;
+import org.jfxtras.ext.swing.table.ListSelectionMode;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
 public class UserList extends CustomNode, IUserList {
 
+    var selectedIndex: Integer = -1;
+    var disableDelete: Boolean = true;
+    var deleteButton: Button;
     var mediator: UserListMediator;
     var users: Object[];
 
@@ -31,18 +34,28 @@ public class UserList extends CustomNode, IUserList {
         this.mediator = mediator;
     }
 
-    override public function setUsers (users : List) : Void {
+    override public function setUsers(users: List): Void {
         this.users = users.toArray();
     }
 
     override protected function create(): Node {
+        deleteButton = Button {
+            id: "deleteButton"
+            text: "Delete"
+            disable: bind disableDelete
+            action: function () {
+                if (selectedIndex != -1) {
+                    mediator.onDelete(users[selectedIndex] as UserVO)
+                }
+            }
+        }
         return VBox {
-                    width: 600
+                    spacing: 5
                     content: [
                         XSwingTable {
                             tableModel: ObjectSequenceTableModel {
-                                override function transformEntry(entry) {
-                                    def userVO: UserVO  = entry as UserVO;
+                                override function transformEntry(entry)                 {
+                                    def userVO: UserVO = entry as UserVO;
                                     return Row {
                                                 cells: [
                                                     StringCell { value: bind userVO.getUsername() }
@@ -55,17 +68,21 @@ public class UserList extends CustomNode, IUserList {
                                 }
                                 columnLabels: ["Username", "First Name", "Last Name", "Email", "Department"]
                                 sequence: bind users;
-                            } }
-                        HBox {
-                            hpos: HPos.RIGHT
-                            spacing: 10
-                            content: [
-                                Button {
-                                    text: "Delete"
-                                    action: function () {
-                                        mediator.onDelete()
-                                    }
+                            }
+                            rowSelectionMode: ListSelectionMode.SINGLE_SELECTION
+                            onSelectedRowsChanged: function (selected: Integer[]) {
+                                disableDelete = false;
+                                if (sizeof selected > 0) {
+                                    selectedIndex = selected[0];
+                                    mediator.onSelect(users[selectedIndex] as UserVO);
                                 }
+
+                            }
+                        }
+                        HBox {
+                            spacing: 5
+                            content: [
+                                deleteButton,
                                 Button {
                                     text: "New"
                                     action: function () {

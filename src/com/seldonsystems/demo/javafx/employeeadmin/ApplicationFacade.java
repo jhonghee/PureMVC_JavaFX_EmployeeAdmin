@@ -5,6 +5,7 @@
 
 package com.seldonsystems.demo.javafx.employeeadmin;
 
+import com.seldonsystems.demo.javafx.employeeadmin.controller.DeleteUserCommand;
 import com.seldonsystems.demo.javafx.employeeadmin.controller.StartupCommand;
 import javafx.scene.Scene;
 import org.puremvc.java.multicore.patterns.facade.Facade;
@@ -18,8 +19,11 @@ public class ApplicationFacade extends Facade {
     // Application name
     public static final String NAME = "EmployeeAdmin";
 
-    // command
+    // Notification name constants
     public static final String STARTUP = "startUp";
+    public static final String DELETE_USER = "deleteUser";
+
+    public static final String USER_DELETED = "userDeleted";
 
     // Constructor
     private ApplicationFacade(String key) {
@@ -43,6 +47,7 @@ public class ApplicationFacade extends Facade {
     protected void initializeController() {
         super.initializeController();
         registerCommand(STARTUP, new StartupCommand());
+        registerCommand(DELETE_USER, new DeleteUserCommand());
     }
 
     public void startup(Scene scene) {
