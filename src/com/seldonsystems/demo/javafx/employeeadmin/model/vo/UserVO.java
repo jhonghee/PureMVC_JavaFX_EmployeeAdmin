@@ -20,6 +20,8 @@ public class UserVO {
     private String password = "";
     private DeptEnum department = DeptEnum.NONE_SELECTED;
 
+    public UserVO() {}
+
     public UserVO(String uname, String fname, String lname, String email, String password, DeptEnum department) {
        if( uname != null ) this.username = uname;
        if( fname != null ) this.fname = fname;

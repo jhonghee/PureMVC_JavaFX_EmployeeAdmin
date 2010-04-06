@@ -61,6 +61,6 @@ public class UserListMediator extends Mediator {
     }
 
     public void onSelect(UserVO selected) {
-        System.out.println("Selected row index: " + selected);
+        System.out.println("Selected user: " + selected.getGivenName());
     }
 }

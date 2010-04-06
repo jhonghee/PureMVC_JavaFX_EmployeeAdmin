@@ -26,7 +26,6 @@ public class UserList extends CustomNode, IUserList {
 
     var selectedIndex: Integer = -1;
     var disableDelete: Boolean = true;
-    var deleteButton: Button;
     var mediator: UserListMediator;
     var users: Object[];
 
@@ -39,22 +38,12 @@ public class UserList extends CustomNode, IUserList {
     }
 
     override protected function create(): Node {
-        deleteButton = Button {
-            id: "deleteButton"
-            text: "Delete"
-            disable: bind disableDelete
-            action: function () {
-                if (selectedIndex != -1) {
-                    mediator.onDelete(users[selectedIndex] as UserVO)
-                }
-            }
-        }
         return VBox {
                     spacing: 5
                     content: [
                         XSwingTable {
                             tableModel: ObjectSequenceTableModel {
-                                override function transformEntry(entry)                 {
+                                override function transformEntry(entry)                           {
                                     def userVO: UserVO = entry as UserVO;
                                     return Row {
                                                 cells: [
@@ -69,20 +58,31 @@ public class UserList extends CustomNode, IUserList {
                                 columnLabels: ["Username", "First Name", "Last Name", "Email", "Department"]
                                 sequence: bind users;
                             }
+                            preferredColumnWidths: [100, 100, 100, 200, 100]
                             rowSelectionMode: ListSelectionMode.SINGLE_SELECTION
                             onSelectedRowsChanged: function (selected: Integer[]) {
-                                disableDelete = false;
                                 if (sizeof selected > 0) {
+                                    disableDelete = false;
                                     selectedIndex = selected[0];
                                     mediator.onSelect(users[selectedIndex] as UserVO);
+                                } else {
+                                    disableDelete = true;
                                 }
-
                             }
                         }
                         HBox {
                             spacing: 5
                             content: [
-                                deleteButton,
+                                Button {
+                                    id: "deleteButton"
+                                    text: "Delete"
+                                    disable: bind disableDelete
+                                    action: function () {
+                                        if (selectedIndex != -1) {
+                                            mediator.onDelete(users[selectedIndex] as UserVO)
+                                        }
+                                    }
+                                }
                                 Button {
                                     text: "New"
                                     action: function () {
