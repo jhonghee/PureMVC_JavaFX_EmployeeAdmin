@@ -17,7 +17,6 @@ import org.jfxtras.scene.control.XPasswordBox;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Tile;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IUserForm;
 import com.seldonsystems.demo.javafx.employeeadmin.view.UserFormMediator;
 import com.seldonsystems.demo.javafx.employeeadmin.model.enums.DeptEnum;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;

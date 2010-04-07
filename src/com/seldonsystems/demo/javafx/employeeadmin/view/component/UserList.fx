@@ -21,9 +21,7 @@ import org.jfxtras.ext.swing.table.ListSelectionMode;
 import javafx.geometry.HPos;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IUserList;
 import javafx.ext.swing.SwingScrollPane;
-import javax.swing.ListSelectionModel;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -32,7 +30,8 @@ public class UserList extends CustomNode, IUserList {
 
     // Refs to view components
     var userListNode: VBox;
-    var swingTable:XSwingTable;
+    var swingTable: XSwingTable;
+    var scroll:SwingScrollPane;
     // Mediators and Models
     var mediator: UserListMediator;
     var users: Object[];
@@ -70,10 +69,10 @@ public class UserList extends CustomNode, IUserList {
                         }
                     ]
                 }
-                SwingScrollPane {
+                scroll = SwingScrollPane {
                     view: swingTable = XSwingTable {
                         tableModel: ObjectSequenceTableModel {
-                            override function transformEntry(entry)                                               {
+                            override function transformEntry(entry)                                                 {
                                 def userVO: UserVO = entry as UserVO;
                                 return Row {
                                             cells: [
@@ -128,5 +127,4 @@ public class UserList extends CustomNode, IUserList {
         }
         return userListNode;
     }
-
 }

@@ -6,7 +6,6 @@
 package com.seldonsystems.demo.javafx.employeeadmin.view.component;
 
 import javafx.scene.CustomNode;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IRolePanel;
 import javafx.scene.Node;
 import com.seldonsystems.demo.javafx.employeeadmin.view.RolePanelMediator;
 import javafx.scene.layout.VBox;
@@ -37,6 +36,7 @@ public class RolePanel extends CustomNode, IRolePanel {
     var userRoles: Object[];
     var selectedRole: RoleEnum;
 
+    // For IRolePanel
     override public function setMediator(mediator: RolePanelMediator): Void {
         this.mediator = mediator;
     }
@@ -75,7 +75,7 @@ public class RolePanel extends CustomNode, IRolePanel {
                 }
                 listView = ListView {
                     width: bind rolePanel.width
-                    height: 300
+                    height: 400
                     items: bind userRoles
                     onMouseClicked: function (event: MouseEvent) {
                         rolePicker.selectItem(RoleEnum.NONE_SELECTED.getLabel());
