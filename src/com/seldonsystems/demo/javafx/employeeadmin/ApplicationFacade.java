@@ -5,6 +5,7 @@
 
 package com.seldonsystems.demo.javafx.employeeadmin;
 
+import com.seldonsystems.demo.javafx.employeeadmin.controller.AddRoleResultCommand;
 import com.seldonsystems.demo.javafx.employeeadmin.controller.DeleteUserCommand;
 import com.seldonsystems.demo.javafx.employeeadmin.controller.StartupCommand;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ public class ApplicationFacade extends Facade {
     public static final String STARTUP = "startUp";
     public static final String DELETE_USER = "deleteUser";
     public static final String NEW_USER = "newUser";
+    public static final String ADD_ROLE_RESULT = "addRoleResult";
 
     public static final String USER_ADDED = "userAdded";
     public static final String USER_UPDATED = "userUpdated";
@@ -53,6 +55,7 @@ public class ApplicationFacade extends Facade {
         super.initializeController();
         registerCommand(STARTUP, new StartupCommand());
         registerCommand(DELETE_USER, new DeleteUserCommand());
+        registerCommand(ADD_ROLE_RESULT, new AddRoleResultCommand());
     }
 
     public void startup(Scene scene) {

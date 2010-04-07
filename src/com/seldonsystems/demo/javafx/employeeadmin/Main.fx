@@ -17,6 +17,7 @@ import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserForm;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
+import com.seldonsystems.demo.javafx.employeeadmin.view.component.RolePanel;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -45,9 +46,13 @@ var stage: Stage = Stage {
                                 id: "userList"
                             }
                             HBox {
+                                    spacing: 10
                                 content: [
                                     UserForm {
                                         id: "userForm"
+                                    }
+                                    RolePanel {
+                                        id: "rolePanel"
                                     }
                                 ]
                             }

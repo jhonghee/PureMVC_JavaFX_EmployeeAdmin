@@ -5,6 +5,7 @@
 
 package com.seldonsystems.demo.javafx.employeeadmin.controller;
 
+import com.seldonsystems.demo.javafx.employeeadmin.view.RolePanelMediator;
 import com.seldonsystems.demo.javafx.employeeadmin.view.UserFormMediator;
 import com.seldonsystems.demo.javafx.employeeadmin.view.UserListMediator;
 import javafx.scene.Scene;
@@ -30,6 +31,7 @@ class PrepViewCommand extends SimpleCommand {
        Scene scene = (Scene) notification.getBody();
        getFacade().registerMediator(new UserListMediator(scene.lookup(UserListMediator.LOOKUP_ID)));
        getFacade().registerMediator(new UserFormMediator(scene.lookup(UserFormMediator.LOOKUP_ID)));
+       getFacade().registerMediator(new RolePanelMediator(scene.lookup(RolePanelMediator.LOOKUP_ID)));
        
     }
 
