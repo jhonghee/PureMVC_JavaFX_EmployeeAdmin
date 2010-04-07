@@ -6,18 +6,23 @@
 package com.seldonsystems.demo.javafx.employeeadmin.view.component;
 
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
-import com.seldonsystems.demo.javafx.employeeadmin.view.UserListMediator;
+import com.seldonsystems.demo.javafx.employeeadmin.view.RolePanelMediator;
 import java.util.List;
 
 /**
  *
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
-public interface IUserList {
+public interface IRolePanel {
 
-    public void setMediator(UserListMediator mediator);
+    public void setMediator(RolePanelMediator mediator);
 
-    public void setUsers(List<UserVO> users);
+    public void clearForm();
 
-    public void deSelect();
+    public void setUser(UserVO userVO);
+
+    public void setUserRoles(List<String> userRoles);
+
+    public void reset();
+
 }

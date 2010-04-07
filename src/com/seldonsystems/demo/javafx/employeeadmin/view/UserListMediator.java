@@ -7,7 +7,7 @@ package com.seldonsystems.demo.javafx.employeeadmin.view;
 import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
 import com.seldonsystems.demo.javafx.employeeadmin.model.UserProxy;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IUserList;
+import com.seldonsystems.demo.javafx.employeeadmin.view.component.IUserList;
 import org.puremvc.java.multicore.interfaces.INotification;
 import org.puremvc.java.multicore.patterns.mediator.Mediator;
 

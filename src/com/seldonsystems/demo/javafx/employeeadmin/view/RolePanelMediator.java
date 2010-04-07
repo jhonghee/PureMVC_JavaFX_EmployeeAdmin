@@ -9,7 +9,7 @@ import com.seldonsystems.demo.javafx.employeeadmin.model.RoleProxy;
 import com.seldonsystems.demo.javafx.employeeadmin.model.enums.RoleEnum;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.RoleVO;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.interfaces.IRolePanel;
+import com.seldonsystems.demo.javafx.employeeadmin.view.component.IRolePanel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
