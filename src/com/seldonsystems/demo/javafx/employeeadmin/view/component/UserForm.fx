@@ -27,6 +27,9 @@ import java.lang.String;
  */
 public class UserForm extends CustomNode, IUserForm {
 
+    public var x:Number;
+    public var y:Number;
+
     // Refs to view components
     var userForm: VBox;
     var fnameField: TextBox;
@@ -84,6 +87,8 @@ public class UserForm extends CustomNode, IUserForm {
 
     override protected function create(): Node {
         userForm = VBox {
+            layoutX: bind x
+            layoutY: bind y
             spacing: 5
             content: [
                 HBox {

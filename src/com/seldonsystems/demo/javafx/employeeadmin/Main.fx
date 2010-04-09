@@ -8,8 +8,6 @@ package com.seldonsystems.demo.javafx.employeeadmin;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
-import javafx.scene.layout.VBox;
-import javafx.geometry.VPos;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserList;
 import javafx.geometry.HPos;
 import javafx.scene.layout.HBox;
@@ -18,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.RolePanel;
+import javafx.scene.layout.VBox;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -33,30 +32,23 @@ var stage: Stage = Stage {
                         Stop { offset: 1.0 color: Color.web("#337799") }
                     ]
                 }
-                width: 800
-                height: 800
+                width: 650
+                height: 870
                 content: [
-                    VBox {
-                        width: bind stage.width
-                        nodeHPos: HPos.CENTER
-                        hpos: HPos.CENTER
-                        spacing: 20
-                        content: [
-                            UserList {
-                                id: "userList"
-                            }
-                            HBox {
-                                    spacing: 10
-                                content: [
-                                    UserForm {
-                                        id: "userForm"
-                                    }
-                                    RolePanel {
-                                        id: "rolePanel"
-                                    }
-                                ]
-                            }
-                        ]
+                    UserList {
+                        id: "userList"
+                        x: 100
+                        y: 10
+                    }
+                    UserForm {
+                        id: "userForm"
+                        x: 10
+                        y: 500
+                    }
+                    RolePanel {
+                        id: "rolePanel"
+                        x: 350
+                        y: 500
                     }
                 ]
             }

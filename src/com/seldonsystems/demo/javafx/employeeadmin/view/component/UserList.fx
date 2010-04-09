@@ -28,6 +28,9 @@ import javafx.ext.swing.SwingScrollPane;
  */
 public class UserList extends CustomNode, IUserList {
 
+    public var x:Number;
+    public var y:Number;
+
     // Refs to view components
     var userListNode: VBox;
     var swingTable: XSwingTable;
@@ -54,6 +57,8 @@ public class UserList extends CustomNode, IUserList {
 
     override protected function create(): Node {
         userListNode = VBox {
+            layoutX: bind x
+            layoutY: bind y
             nodeHPos: HPos.CENTER
             hpos: HPos.CENTER
             spacing: 5
