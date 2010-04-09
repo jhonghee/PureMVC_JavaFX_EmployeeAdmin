@@ -9,14 +9,11 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserList;
-import javafx.geometry.HPos;
-import javafx.scene.layout.HBox;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserForm;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.RolePanel;
-import javafx.scene.layout.VBox;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
