@@ -21,6 +21,8 @@ import com.seldonsystems.demo.javafx.employeeadmin.view.UserFormMediator;
 import com.seldonsystems.demo.javafx.employeeadmin.model.enums.DeptEnum;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
 import java.lang.String;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -96,6 +98,10 @@ public class UserForm extends CustomNode, IUserForm {
                     width: bind userForm.width
                     content: [
                         Label {
+                            textFill: Color.NAVAJOWHITE
+                            font: Font {
+                                size: 14
+                            }
                             text: "User Profile"
                         }
                     ]

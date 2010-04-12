@@ -14,12 +14,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.RolePanel;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.geometry.HPos;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
 var stage: Stage = Stage {
             title: "PureMVC JavaFX Demo: EmployeeAdmin"
+            width:620
+            height:660
             scene: Scene {
                 fill: LinearGradient {
                     startX: 0.0, startY: 1.0, endX: 0.0, endY: 0.0,
@@ -29,23 +34,25 @@ var stage: Stage = Stage {
                         Stop { offset: 1.0 color: Color.web("#337799") }
                     ]
                 }
-                width: 650
-                height: 870
                 content: [
-                    UserList {
-                        id: "userList"
-                        x: 100
-                        y: 10
-                    }
-                    UserForm {
-                        id: "userForm"
-                        x: 10
-                        y: 500
-                    }
-                    RolePanel {
-                        id: "rolePanel"
-                        x: 350
-                        y: 500
+                    VBox {
+                        layoutX: 10
+                        layoutY: 10
+                        spacing: 10
+                        content: [
+                            UserList {
+                                id: "userList"
+                            }
+                            HBox {
+                                spacing: 10
+                                content: [UserForm {
+                                        id: "userForm"
+                                    }
+                                    RolePanel {
+                                        id: "rolePanel"
+                                    }]
+                            }
+                        ]
                     }
                 ]
             }

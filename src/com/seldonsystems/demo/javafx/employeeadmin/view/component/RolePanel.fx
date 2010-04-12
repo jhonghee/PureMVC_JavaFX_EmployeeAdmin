@@ -18,16 +18,20 @@ import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
 import java.util.List;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Group;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.geometry.HPos;
+import javafx.scene.layout.LayoutInfo;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
 public class RolePanel extends CustomNode, IRolePanel {
 
-    public var x: Number;
-    public var y: Number;
     // Refs to view components
-    var rolePanel: Group;
+    var rolePanel: VBox;
     var rolePicker: XPicker;
     var listView: ListView;
     // Mediators and Models
@@ -61,53 +65,58 @@ public class RolePanel extends CustomNode, IRolePanel {
     }
 
     override protected function create(): Node {
-        rolePanel = Group {
-            layoutX: bind x
-            layoutY: bind y
+        rolePanel = VBox {
+            spacing: 5
             content: [
                 Label {
+                    textFill: Color.NAVAJOWHITE
+                    font: Font {
+                        size: 14
+                    }
                     text: "User Roles"
                 }
                 listView = ListView {
-                    layoutY: 20
-                    width: 270
-                    height: 185
+                    layoutInfo: LayoutInfo {
+                        width: 270
+                        height: 185
+                    }
                     items: bind userRoles
                     onMouseClicked: function (event: MouseEvent) {
                         rolePicker.selectItem(RoleEnum.NONE_SELECTED.getLabel());
                         selectedRole = RoleEnum.getEnumByLabel(listView.selectedItem as String);
                     }
                 }
-                rolePicker = XPicker {
-                    layoutY: 209
-                    disable: bind (user == null)
-                    pickerType: XPickerType.DROP_DOWN
-                    items: [RoleEnum.getLabels()]
-                    onIndexChange: function (index: Integer) {
-                        selectedRole = null;
-                        listView.clearSelection();
-                        selectedRole = RoleEnum.getEnumByLabel(rolePicker.selectedItem as String);
-                    }
-                }
-                Button {
-                    layoutX: 155
-                    layoutY: 210
-                    disable: bind (rolePicker.selectedItem == RoleEnum.NONE_SELECTED.getLabel())
-                    id: "addButton"
-                    text: "Add"
-                    action: function () {
-                        mediator.onAddRole(user, selectedRole);
-                    }
-                }
-                Button {
-                    layoutX: 200
-                    layoutY: 210
-                    disable: bind (selectedRole == null)
-                    id: "removeButton"
-                    text: "Remove"
-                    action: function () {
-                        mediator.onRemoveRole(user, selectedRole);
-                    }
+                HBox {
+                    spacing: 5
+                    hpos: HPos.RIGHT
+                    content: [
+                        rolePicker = XPicker {
+                            disable: bind (user == null)
+                            pickerType: XPickerType.DROP_DOWN
+                            items: [RoleEnum.getLabels()]
+                            onIndexChange: function (index: Integer) {
+                                selectedRole = null;
+                                listView.clearSelection();
+                                selectedRole = RoleEnum.getEnumByLabel(rolePicker.selectedItem as String);
+                            }
+                        }
+                        Button {
+                            disable: bind (rolePicker.selectedItem == RoleEnum.NONE_SELECTED.getLabel())
+                            id: "addButton"
+                            text: "Add"
+                            action: function () {
+                                mediator.onAddRole(user, selectedRole);
+                            }
+                        }
+                        Button {
+                            disable: bind (selectedRole == null)
+                            id: "removeButton"
+                            text: "Remove"
+                            action: function () {
+                                mediator.onRemoveRole(user, selectedRole);
+                            }
+                        }
+                    ]
                 }
             ]
         }

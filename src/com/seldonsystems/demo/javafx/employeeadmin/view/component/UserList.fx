@@ -22,19 +22,20 @@ import javafx.geometry.HPos;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 import javafx.ext.swing.SwingScrollPane;
+import javafx.scene.layout.LayoutInfo;
+import javafx.scene.paint.Color;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
 public class UserList extends CustomNode, IUserList {
 
-    public var x:Number;
-    public var y:Number;
-
+    public var x: Number;
+    public var y: Number;
     // Refs to view components
     var userListNode: VBox;
     var swingTable: XSwingTable;
-    var scroll:SwingScrollPane;
+    var scroll: SwingScrollPane;
     // Mediators and Models
     var mediator: UserListMediator;
     var users: Object[];
@@ -67,17 +68,19 @@ public class UserList extends CustomNode, IUserList {
                     width: bind userListNode.width
                     content: [
                         Label {
+                            textFill: Color.NAVAJOWHITE
                             font: Font {
-                                size: 12
+                                size: 14
                             }
                             text: "Users"
                         }
                     ]
                 }
                 scroll = SwingScrollPane {
+                    layoutInfo: LayoutInfo { width: 580 height: 200 }
                     view: swingTable = XSwingTable {
                         tableModel: ObjectSequenceTableModel {
-                            override function transformEntry(entry)                                                 {
+                            override function transformEntry(entry) {
                                 def userVO: UserVO = entry as UserVO;
                                 return Row {
                                             cells: [
@@ -132,4 +135,5 @@ public class UserList extends CustomNode, IUserList {
         }
         return userListNode;
     }
+
 }
