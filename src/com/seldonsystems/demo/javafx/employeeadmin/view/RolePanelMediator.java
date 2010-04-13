@@ -11,9 +11,6 @@ import com.seldonsystems.demo.javafx.employeeadmin.model.vo.RoleVO;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.IRolePanel;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import org.puremvc.java.multicore.interfaces.INotification;
 import org.puremvc.java.multicore.patterns.mediator.Mediator;
 

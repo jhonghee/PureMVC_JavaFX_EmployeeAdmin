@@ -7,7 +7,7 @@ package com.seldonsystems.demo.javafx.employeeadmin;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
+
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserList;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserForm;
 import javafx.scene.paint.Color;
@@ -16,7 +16,6 @@ import javafx.scene.paint.Stop;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.RolePanel;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import javafx.geometry.HPos;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -57,6 +56,6 @@ var stage: Stage = Stage {
                 ]
             }
         }
-var applicationFacade: ApplicationFacade = ApplicationFacade.getInstance(ApplicationFacade.NAME);
 
+var applicationFacade: ApplicationFacade = ApplicationFacade.getInstance(ApplicationFacade.NAME);
 applicationFacade.startup(stage.scene);
