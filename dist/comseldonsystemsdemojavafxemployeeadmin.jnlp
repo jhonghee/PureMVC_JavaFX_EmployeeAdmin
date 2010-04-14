@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jnlp spec="1.0+" codebase="http://github.com/jhonghee/PureMVC_JavaFX_EmployeeAdmin/raw/master/dist/" href="comseldonsystemsdemojavafxemployeeadmin.jnlp">
     <information>
-        <title>comseldonsystemsdemojavafxemployeeadmin</title>
+        <title>PureMVC JavaFX EmployeeAdmin Demo</title>
         <vendor>Jhonghee Park</vendor>
         <homepage href="http://github.com/jhonghee/PureMVC_JavaFX_EmployeeAdmin"/>
-        <description>comseldonsystemsdemojavafxemployeeadmin</description>
+        <description>JavaFX Implementation of PureMVC EmployeeAdmin Demo</description>
         <offline-allowed/>
     </information>
     <resources>
