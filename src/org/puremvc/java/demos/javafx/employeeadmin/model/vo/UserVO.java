@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package com.seldonsystems.demo.javafx.employeeadmin.model.vo;
+package org.puremvc.java.demos.javafx.employeeadmin.model.vo;
 
-import com.seldonsystems.demo.javafx.employeeadmin.model.enums.DeptEnum;
+import org.puremvc.java.demos.javafx.employeeadmin.model.enums.DeptEnum;
 
 /**
  *

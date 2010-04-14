@@ -4,7 +4,7 @@
  * Created on Apr 13, 2010, 4:45:22 PM
  */
 
-package com.seldonsystems.demo.javafx.employeeadmin.controller;
+package org.puremvc.java.demos.javafx.employeeadmin.controller;
 
 import org.puremvc.java.multicore.patterns.command.MacroCommand;
 

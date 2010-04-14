@@ -3,14 +3,14 @@
  *
  * Created on Apr 13, 2010, 4:54:52 PM
  */
-package com.seldonsystems.demo.javafx.employeeadmin.view;
+package org.puremvc.java.demos.javafx.employeeadmin.view;
 
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserList;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
-import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
+import org.puremvc.java.demos.javafx.employeeadmin.view.component.UserList;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
+import org.puremvc.java.demos.javafx.employeeadmin.ApplicationFacade;
 import org.puremvc.java.multicore.interfaces.INotification;
 import org.puremvc.java.multicore.patterns.mediator.Mediator;
-import com.seldonsystems.demo.javafx.employeeadmin.model.UserProxy;
+import org.puremvc.java.demos.javafx.employeeadmin.model.UserProxy;
 
 /**
  * @author Jhonghee

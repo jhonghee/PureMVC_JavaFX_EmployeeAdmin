@@ -4,13 +4,13 @@
  * Created on Apr 13, 2010, 2:53:04 PM
  */
 
-package com.seldonsystems.demo.javafx.employeeadmin;
+package org.puremvc.java.demos.javafx.employeeadmin;
 
-import com.seldonsystems.demo.javafx.employeeadmin.controller.StartupCommand;
-import com.seldonsystems.demo.javafx.employeeadmin.controller.DeleteUserCommand;
-import com.seldonsystems.demo.javafx.employeeadmin.controller.AddRoleResultCommand;
+import org.puremvc.java.demos.javafx.employeeadmin.controller.StartupCommand;
+import org.puremvc.java.demos.javafx.employeeadmin.controller.DeleteUserCommand;
+import org.puremvc.java.demos.javafx.employeeadmin.controller.AddRoleResultCommand;
 import org.puremvc.java.multicore.patterns.facade.Facade;
-import com.seldonsystems.demo.javafx.employeeadmin.Main.MainFrame;
+import org.puremvc.java.demos.javafx.employeeadmin.Main.MainFrame;
 
 // Application name
 public def NAME:String = "EmployeeAdmin";

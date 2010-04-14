@@ -3,7 +3,7 @@
  *
  * Created on Apr 6, 2010, 4:13:29 PM
  */
-package com.seldonsystems.demo.javafx.employeeadmin.view.component;
+package org.puremvc.java.demos.javafx.employeeadmin.view.component;
 
 import javafx.scene.CustomNode;
 import javafx.scene.Node;
@@ -11,9 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import org.jfxtras.scene.control.XPicker;
 import org.jfxtras.scene.control.XPickerType;
-import com.seldonsystems.demo.javafx.employeeadmin.model.enums.RoleEnum;
+import org.puremvc.java.demos.javafx.employeeadmin.model.enums.RoleEnum;
 import javafx.scene.control.ListView;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.geometry.HPos;

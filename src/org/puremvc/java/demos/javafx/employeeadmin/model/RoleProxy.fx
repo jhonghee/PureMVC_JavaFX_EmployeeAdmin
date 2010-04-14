@@ -3,14 +3,14 @@
  *
  * Created on Apr 14, 2010, 5:40:23 AM
  */
-package com.seldonsystems.demo.javafx.employeeadmin.model;
+package org.puremvc.java.demos.javafx.employeeadmin.model;
 
 import org.puremvc.java.multicore.patterns.proxy.Proxy;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.RoleVO;
-import com.seldonsystems.demo.javafx.employeeadmin.model.enums.RoleEnum;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
-import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
-import com.seldonsystems.demo.javafx.employeeadmin.model.RoleProxy.RoleListWrapper;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.RoleVO;
+import org.puremvc.java.demos.javafx.employeeadmin.model.enums.RoleEnum;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
+import org.puremvc.java.demos.javafx.employeeadmin.ApplicationFacade;
+import org.puremvc.java.demos.javafx.employeeadmin.model.RoleProxy.RoleListWrapper;
 
 public def NAME: String = "RoleProxy";
 

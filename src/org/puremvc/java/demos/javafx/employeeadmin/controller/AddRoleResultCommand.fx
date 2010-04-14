@@ -4,7 +4,7 @@
  * Created on Apr 14, 2010, 2:52:00 AM
  */
 
-package com.seldonsystems.demo.javafx.employeeadmin.controller;
+package org.puremvc.java.demos.javafx.employeeadmin.controller;
 
 import org.puremvc.java.multicore.patterns.command.SimpleCommand;
 import org.puremvc.java.multicore.interfaces.INotification;

@@ -3,18 +3,18 @@
  *
  * Created on Apr 13, 2010, 4:48:46 PM
  */
-package com.seldonsystems.demo.javafx.employeeadmin.controller;
+package org.puremvc.java.demos.javafx.employeeadmin.controller;
 
 import org.puremvc.java.multicore.patterns.command.SimpleCommand;
 import org.puremvc.java.multicore.interfaces.INotification;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
 import java.util.List;
-import com.seldonsystems.demo.javafx.employeeadmin.model.enums.RoleEnum;
+import org.puremvc.java.demos.javafx.employeeadmin.model.enums.RoleEnum;
 import java.util.ArrayList;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.RoleVO;
-import com.seldonsystems.demo.javafx.employeeadmin.model.enums.DeptEnum;
-import com.seldonsystems.demo.javafx.employeeadmin.model.UserProxy;
-import com.seldonsystems.demo.javafx.employeeadmin.model.RoleProxy;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.RoleVO;
+import org.puremvc.java.demos.javafx.employeeadmin.model.enums.DeptEnum;
+import org.puremvc.java.demos.javafx.employeeadmin.model.UserProxy;
+import org.puremvc.java.demos.javafx.employeeadmin.model.RoleProxy;
 
 /**
  * @author Jhonghee

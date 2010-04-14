@@ -3,7 +3,7 @@
  *
  * Created on Apr 6, 2010, 2:29:03 AM
  */
-package com.seldonsystems.demo.javafx.employeeadmin.view.component;
+package org.puremvc.java.demos.javafx.employeeadmin.view.component;
 
 import javafx.scene.CustomNode;
 import javafx.scene.Node;
@@ -17,12 +17,12 @@ import org.jfxtras.scene.control.XPasswordBox;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Tile;
-import com.seldonsystems.demo.javafx.employeeadmin.model.enums.DeptEnum;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
+import org.puremvc.java.demos.javafx.employeeadmin.model.enums.DeptEnum;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
 import java.lang.String;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import com.seldonsystems.demo.javafx.employeeadmin.view.UserFormMediator;
+import org.puremvc.java.demos.javafx.employeeadmin.view.UserFormMediator;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.

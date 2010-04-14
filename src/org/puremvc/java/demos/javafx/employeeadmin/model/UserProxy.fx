@@ -3,11 +3,11 @@
  *
  * Created on Apr 14, 2010, 5:12:33 AM
  */
-package com.seldonsystems.demo.javafx.employeeadmin.model;
+package org.puremvc.java.demos.javafx.employeeadmin.model;
 
 import org.puremvc.java.multicore.patterns.proxy.Proxy;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
-import com.seldonsystems.demo.javafx.employeeadmin.model.UserProxy.UserListWrapper;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
+import org.puremvc.java.demos.javafx.employeeadmin.model.UserProxy.UserListWrapper;
 
 /**
  * @author Jhonghee

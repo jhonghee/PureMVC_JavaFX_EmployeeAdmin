@@ -3,7 +3,7 @@
  *
  * Created on Apr 4, 2010, 8:52:55 AM
  */
-package com.seldonsystems.demo.javafx.employeeadmin.view.component;
+package org.puremvc.java.demos.javafx.employeeadmin.view.component;
 
 import javafx.scene.CustomNode;
 import javafx.scene.Node;
@@ -12,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import org.jfxtras.ext.swing.XSwingTable;
 import org.jfxtras.ext.swing.table.ObjectSequenceTableModel;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
 import org.jfxtras.ext.swing.table.Row;
 import org.jfxtras.ext.swing.table.StringCell;
 import org.jfxtras.ext.swing.table.ListSelectionMode;

@@ -3,16 +3,16 @@
  *
  * Created on Apr 1, 2010, 3:39:33 PM
  */
-package com.seldonsystems.demo.javafx.employeeadmin;
+package org.puremvc.java.demos.javafx.employeeadmin;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserList;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserForm;
+import org.puremvc.java.demos.javafx.employeeadmin.view.component.UserList;
+import org.puremvc.java.demos.javafx.employeeadmin.view.component.UserForm;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.RolePanel;
+import org.puremvc.java.demos.javafx.employeeadmin.view.component.RolePanel;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 

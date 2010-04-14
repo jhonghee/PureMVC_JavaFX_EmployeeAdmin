@@ -3,18 +3,18 @@
  *
  * Created on Apr 14, 2010, 4:16:19 AM
  */
-package com.seldonsystems.demo.javafx.employeeadmin.view;
+package org.puremvc.java.demos.javafx.employeeadmin.view;
 
-import com.seldonsystems.demo.javafx.employeeadmin.view.component.RolePanel;
+import org.puremvc.java.demos.javafx.employeeadmin.view.component.RolePanel;
 import org.puremvc.java.multicore.interfaces.INotification;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
-import com.seldonsystems.demo.javafx.employeeadmin.ApplicationFacade;
-import com.seldonsystems.demo.javafx.employeeadmin.model.vo.RoleVO;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
+import org.puremvc.java.demos.javafx.employeeadmin.ApplicationFacade;
+import org.puremvc.java.demos.javafx.employeeadmin.model.vo.RoleVO;
 import java.util.ArrayList;
-import com.seldonsystems.demo.javafx.employeeadmin.model.enums.RoleEnum;
+import org.puremvc.java.demos.javafx.employeeadmin.model.enums.RoleEnum;
 import javafx.scene.input.MouseEvent;
 import org.puremvc.java.multicore.patterns.mediator.Mediator;
-import com.seldonsystems.demo.javafx.employeeadmin.model.RoleProxy;
+import org.puremvc.java.demos.javafx.employeeadmin.model.RoleProxy;
 
 public def NAME: String = "rolePanel";
 
