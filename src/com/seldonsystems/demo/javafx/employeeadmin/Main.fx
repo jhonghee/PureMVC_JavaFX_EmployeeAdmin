@@ -7,7 +7,6 @@ package com.seldonsystems.demo.javafx.employeeadmin;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserList;
 import com.seldonsystems.demo.javafx.employeeadmin.view.component.UserForm;
 import javafx.scene.paint.Color;
@@ -20,10 +19,13 @@ import javafx.scene.layout.HBox;
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
-var stage: Stage = Stage {
-            title: "PureMVC JavaFX Demo: EmployeeAdmin"
-            width:620
-            height:660
+
+function run() {
+
+    var mainFrame:MainFrame = MainFrame {
+            title:   "PureMVC JavaFX Demo: EmployeeAdmin"
+            width: 620
+            height: 660
             scene: Scene {
                 fill: LinearGradient {
                     startX: 0.0, startY: 1.0, endX: 0.0, endY: 0.0,
@@ -39,23 +41,38 @@ var stage: Stage = Stage {
                         layoutY: 10
                         spacing: 10
                         content: [
-                            UserList {
-                                id: "userList"
-                            }
+                            UserList { id: "userList" }
                             HBox {
                                 spacing: 10
-                                content: [UserForm {
-                                        id: "userForm"
-                                    }
-                                    RolePanel {
-                                        id: "rolePanel"
-                                    }]
+                                content: [
+                                    UserForm { id: "userForm" }
+                                    RolePanel { id: "rolePanel" }
+                                ]
                             }
                         ]
                     }
                 ]
             }
-        }
+    }
 
-var applicationFacade: ApplicationFacade = ApplicationFacade.getInstance(ApplicationFacade.NAME);
-applicationFacade.startup(stage.scene);
+
+    var applicationFacade: ApplicationFacade = ApplicationFacade {
+                key: ApplicationFacade.NAME
+            }
+
+    applicationFacade.startup(mainFrame);
+
+}
+
+public class MainFrame extends Stage {
+    public var userList:UserList;
+    public var userForm:UserForm;
+    public var rolePanel:RolePanel;
+
+    postinit {
+        userList = scene.lookup("userList") as UserList;
+        userForm = scene.lookup("userForm") as UserForm;
+        rolePanel = scene.lookup("rolePanel") as RolePanel;
+    }
+
+}

@@ -17,80 +17,44 @@ import org.jfxtras.scene.control.XPasswordBox;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Tile;
-import com.seldonsystems.demo.javafx.employeeadmin.view.UserFormMediator;
 import com.seldonsystems.demo.javafx.employeeadmin.model.enums.DeptEnum;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
 import java.lang.String;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import com.seldonsystems.demo.javafx.employeeadmin.view.UserFormMediator;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
-public class UserForm extends CustomNode, IUserForm {
-
-    public var x:Number;
-    public var y:Number;
+public class UserForm extends CustomNode {
 
     // Refs to view components
+    public var updateButton: Button;
+    public var cancelButton: Button;
+    public var fnameField: TextBox;
+    public var lnameField: TextBox;
+    public var emailField: TextBox;
+    public var usernameField: TextBox;
+    public var passwordField: XPasswordBox;
+    public var confirmedPasswordField: XPasswordBox;
+    public var departmentField: XPicker;
     var userForm: VBox;
-    var fnameField: TextBox;
-    var lnameField: TextBox;
-    var emailField: TextBox;
-    var usernameField: TextBox;
-    var passwordField: XPasswordBox;
-    var confirmedPasswordField: XPasswordBox;
-    var departmentField: XPicker;
     // Mediators and models
-    var mediator: UserFormMediator;
-    var user: UserVO;
+    public var user: UserVO;
     // Bindinig variable
-    var username:String = "";
-    var fname:String = "";
-    var lname:String = "";
-    var email:String = "";
-    var password:String = "";
-    var confirmed:String = "";
-    var department:DeptEnum = DeptEnum.NONE_SELECTED;
+    public var username: String = "";
+    public var fname: String = "";
+    public var lname: String = "";
+    public var email: String = "";
+    public var password: String = "";
+    public var confirmed: String = "";
+    public var department: DeptEnum = DeptEnum.NONE_SELECTED;
     // States
-    var mode:String;
-
-    override public function setMediator(mediator: UserFormMediator): Void {
-        this.mediator = mediator;
-    }
-
-    override public function setUser (user : UserVO, mode : String) : Void {
-        this.user = user;
-        this.username = user.getUsername();
-        this.fname = user.getFname();
-        this.lname = user.getLname();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.confirmed = user.getPassword();
-        this.department = user.getDepartment();
-
-        this.mode = mode;
-
-        // Unfortunately, XPicker does not have bindable property.
-        departmentField.selectItem(user.getDepartment().getLabel());
-    }
-
-    override public function reset () : Void {
-        user = null;
-        username = "";
-        fname = "";
-        lname = "";
-        email = "";
-        password = "";
-        confirmed = "";
-        department = DeptEnum.NONE_SELECTED;
-        departmentField.selectItem(DeptEnum.NONE_SELECTED.getLabel());
-    }
+    public var mode: String;
 
     override protected function create(): Node {
         userForm = VBox {
-            layoutX: bind x
-            layoutY: bind y
             spacing: 5
             content: [
                 HBox {
@@ -107,7 +71,7 @@ public class UserForm extends CustomNode, IUserForm {
                     ]
                 }
                 Tile {
-                    disable: bind if( user == null ) true else false
+                    disable: bind if (user == null) true else false
                     columns: 2
                     rows: 7
                     vgap: 3
@@ -117,44 +81,44 @@ public class UserForm extends CustomNode, IUserForm {
                             text: "First Name"
                         }
                         fnameField = TextBox {
-                                text:bind fname with inverse
-                            }
+                            text: bind fname with inverse
+                        }
                         // Last name
                         Label {
                             text: "Last Name"
                         }
                         lnameField = TextBox {
-                                text:bind lname with inverse
-                            }
+                            text: bind lname with inverse
+                        }
                         // Email
                         Label {
                             text: "Email"
                         }
                         emailField = TextBox {
-                                text:bind email with inverse
-                            }
+                            text: bind email with inverse
+                        }
                         // Username
                         Label {
                             text: "Username"
                         }
                         usernameField = TextBox {
-                                text:bind username with inverse
-                                disable: bind if( mode == IUserForm.MODE_EDIT ) true else false
-                            }
+                            text: bind username with inverse
+                            disable: bind if (mode == UserFormMediator.MODE_EDIT) true else false
+                        }
                         // Password
                         Label {
                             text: "Password"
                         }
                         passwordField = XPasswordBox {
-                                text:bind password with inverse
-                            }
+                            text: bind password with inverse
+                        }
                         // Confirm password
                         Label {
                             text: "Confirm Password"
                         }
                         confirmedPasswordField = XPasswordBox {
-                                text:bind confirmed with inverse
-                            }
+                            text: bind confirmed with inverse
+                        }
                         // Department
                         Label {
                             text: "Department"
@@ -162,10 +126,6 @@ public class UserForm extends CustomNode, IUserForm {
                         departmentField = XPicker {
                             pickerType: XPickerType.DROP_DOWN
                             items: [DeptEnum.getLabels()]
-                            onIndexChange: function(index:Integer) {
-                                department = DeptEnum.getEnumByLabel(departmentField.selectedItem as String);
-                            }
-
                         }
                     ]
                 }
@@ -174,38 +134,15 @@ public class UserForm extends CustomNode, IUserForm {
                     spacing: 5
                     hpos: HPos.RIGHT
                     content: [
-                        Button {
+                        updateButton = Button {
                             id: "updateProfileButton"
-                            text: bind if (mode == IUserForm.MODE_ADD) "Add User" else "Update Profile"
+                            text: bind if (mode == UserFormMediator.MODE_ADD) "Add User" else "Update Profile"
                             disable: bind disableSubmit(username, password, confirmed, department)
-                            action: function () {
-                                user = new UserVO(
-                                    usernameField.text,
-                                    fnameField.text,
-                                    lnameField.text,
-                                    emailField.text,
-                                    passwordField.text,
-                                    DeptEnum.getEnumByLabel(departmentField.selectedItem as String)
-                                );
-
-                                if( mode == IUserForm.MODE_ADD) {
-                                    mediator.onAdd(user);
-                                }
-                                else {
-                                    mediator.onUpdate(user);
-                                }
-
-
-                            }
                         }
-                        Button {
+                        cancelButton = Button {
                             id: "cancelButton"
                             text: "Cancel"
-                            disable: bind if( user == null ) true else false
-                            action: function () {
-                                reset();
-                                mediator.onCancel();
-                            }
+                            disable: bind if (user == null) true else false
                         }
                     ]
                 }
@@ -214,7 +151,9 @@ public class UserForm extends CustomNode, IUserForm {
         return userForm;
     }
 
-    bound function disableSubmit(u:String, p:String, c:String, d:DeptEnum):Boolean {
+
+
+bound function disableSubmit(u:String, p:String, c:String, d:DeptEnum):Boolean {
         return (u == "") or (p != c) or (d.getLabel() == DeptEnum.NONE_SELECTED.getLabel());
     }
 

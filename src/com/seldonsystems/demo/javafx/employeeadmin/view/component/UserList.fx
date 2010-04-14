@@ -7,7 +7,6 @@ package com.seldonsystems.demo.javafx.employeeadmin.view.component;
 
 import javafx.scene.CustomNode;
 import javafx.scene.Node;
-import com.seldonsystems.demo.javafx.employeeadmin.view.UserListMediator;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
@@ -16,7 +15,6 @@ import org.jfxtras.ext.swing.table.ObjectSequenceTableModel;
 import com.seldonsystems.demo.javafx.employeeadmin.model.vo.UserVO;
 import org.jfxtras.ext.swing.table.Row;
 import org.jfxtras.ext.swing.table.StringCell;
-import java.util.List;
 import org.jfxtras.ext.swing.table.ListSelectionMode;
 import javafx.geometry.HPos;
 import javafx.scene.control.Label;
@@ -28,33 +26,21 @@ import javafx.scene.paint.Color;
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
  */
-public class UserList extends CustomNode, IUserList {
+public class UserList extends CustomNode {
 
     public var x: Number;
     public var y: Number;
     // Refs to view components
     var userListNode: VBox;
-    var swingTable: XSwingTable;
-    var scroll: SwingScrollPane;
-    // Mediators and Models
-    var mediator: UserListMediator;
-    var users: Object[];
+    public var swingTable: XSwingTable;
+    public var deleteButton: Button;
+    public var newButton: Button;
+    // Models
+    public var users: Object[];
     // Binding variables
-    var disableDelete: Boolean = true;
+    public var disableDelete: Boolean = true;
     // States
-    var selectedIndex: Integer = -1;
-
-    override public function setMediator(mediator: UserListMediator): Void {
-        this.mediator = mediator;
-    }
-
-    override public function setUsers(users: List): Void {
-        this.users = users.toArray();
-    }
-
-    override public function deSelect(): Void {
-        swingTable.getJTable().clearSelection();
-    }
+    public var selectedIndex: Integer = -1;
 
     override protected function create(): Node {
         userListNode = VBox {
@@ -76,7 +62,7 @@ public class UserList extends CustomNode, IUserList {
                         }
                     ]
                 }
-                scroll = SwingScrollPane {
+                SwingScrollPane {
                     layoutInfo: LayoutInfo { width: 580 height: 200 }
                     view: swingTable = XSwingTable {
                         tableModel: ObjectSequenceTableModel {
@@ -97,15 +83,6 @@ public class UserList extends CustomNode, IUserList {
                         }
                         preferredColumnWidths: [100, 100, 100, 200, 100]
                         rowSelectionMode: ListSelectionMode.SINGLE_SELECTION
-                        onSelectedRowsChanged: function (selected: Integer[]) {
-                            if (sizeof selected > 0) {
-                                disableDelete = false;
-                                selectedIndex = selected[0];
-                                mediator.onSelect(users[selectedIndex] as UserVO);
-                            } else {
-                                disableDelete = true;
-                            }
-                        }
                     }
                 }
                 HBox {
@@ -113,21 +90,13 @@ public class UserList extends CustomNode, IUserList {
                     spacing: 5
                     hpos: HPos.RIGHT
                     content: [
-                        Button {
+                        deleteButton = Button {
                             id: "deleteButton"
                             text: "Delete"
                             disable: bind disableDelete
-                            action: function () {
-                                if (selectedIndex != -1) {
-                                    mediator.onDelete(users[selectedIndex] as UserVO)
-                                }
-                            }
                         }
-                        Button {
+                        newButton = Button {
                             text: "New"
-                            action: function () {
-                                mediator.onNew()
-                            }
                         }
                     ]
                 }
