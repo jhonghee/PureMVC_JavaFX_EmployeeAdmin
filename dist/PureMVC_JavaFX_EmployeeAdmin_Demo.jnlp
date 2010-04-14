@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jnlp spec="1.0+" codebase="http://localhost:8082/servlet/org.netbeans.modules.javafx.project.JnlpDownloadServlet/D%3A/dev/NetBeansProjects/PureMVC_JavaFX_EmployeeAdmin/dist/" href="PureMVC_JavaFX_EmployeeAdmin_Demo.jnlp">
+<jnlp spec="1.0+" codebase="http://github.com/jhonghee/PureMVC_JavaFX_EmployeeAdmin/raw/master/dist/" href="PureMVC_JavaFX_EmployeeAdmin_Demo.jnlp">
     <information>
         <title>PureMVC_JavaFX_EmployeeAdmin_Demo</title>
         <vendor>Jhonghee Park</vendor>
-        <homepage href="http://localhost:8082/servlet/org.netbeans.modules.javafx.project.JnlpDownloadServlet/D%3A/dev/NetBeansProjects/PureMVC_JavaFX_EmployeeAdmin/dist/"/>
+        <homepage href="http://github.com/jhonghee/PureMVC_JavaFX_EmployeeAdmin"/>
         <description>PureMVC_JavaFX_EmployeeAdmin_Demo</description>
         <offline-allowed/>
     </information>
