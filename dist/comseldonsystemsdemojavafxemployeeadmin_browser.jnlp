@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://localhost:8082/servlet/org.netbeans.modules.javafx.project.JnlpDownloadServlet/D%3A/dev/NetBeansProjects/PureMVC_JavaFX_EmployeeAdmin/dist/" href="comseldonsystemsdemojavafxemployeeadmin_browser.jnlp">
+    <information>
+        <title>comseldonsystemsdemojavafxemployeeadmin</title>
+        <vendor>remotejpark</vendor>
+        <homepage href="http://localhost:8082/servlet/org.netbeans.modules.javafx.project.JnlpDownloadServlet/D%3A/dev/NetBeansProjects/PureMVC_JavaFX_EmployeeAdmin/dist/"/>
+        <description>comseldonsystemsdemojavafxemployeeadmin</description>
+        <offline-allowed/>
+    </information>
+    <resources>
+        <j2se version="1.5+"/>
+        <extension name="JavaFX Runtime" href="http://dl.javafx.com/1.2/javafx-rt.jnlp"/>
+        <jar href="comseldonsystemsdemojavafxemployeeadmin.jar" main="true"/>
+        <jar href="lib/jfxtras-common.jar"/>
+        <jar href="lib/jfxtras-controls.jar"/>
+        <jar href="lib/PureMVC_JavaFX_MultiCore.jar"/>
+    </resources>
+    <applet-desc name="comseldonsystemsdemojavafxemployeeadmin" main-class="com.sun.javafx.runtime.adapter.Applet" width="200" height="200">
+        <param name="MainJavaFXScript" value="org.puremvc.java.demos.javafx.employeeadmin.Main"/>
+    </applet-desc>
+    <update check="background"/>
+</jnlp>
