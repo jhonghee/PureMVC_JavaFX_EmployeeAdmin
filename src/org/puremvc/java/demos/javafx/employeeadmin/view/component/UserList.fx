@@ -28,8 +28,6 @@ import javafx.scene.paint.Color;
  */
 public class UserList extends CustomNode {
 
-    public var x: Number;
-    public var y: Number;
     // Refs to view components
     var userListNode: VBox;
     public var swingTable: XSwingTable;
@@ -44,8 +42,6 @@ public class UserList extends CustomNode {
 
     override protected function create(): Node {
         userListNode = VBox {
-            layoutX: bind x
-            layoutY: bind y
             nodeHPos: HPos.CENTER
             hpos: HPos.CENTER
             spacing: 5
