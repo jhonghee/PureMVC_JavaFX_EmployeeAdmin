@@ -20,6 +20,7 @@ import javafx.geometry.HPos;
 import javafx.scene.layout.LayoutInfo;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.control.ChoiceBox;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -28,7 +29,7 @@ public class RolePanel extends CustomNode {
 
     // Refs to view components
     var rolePanel: VBox;
-    public var rolePicker: XPicker;
+    public var rolePicker: ChoiceBox;
     public var listView: ListView;
     public var addButton: Button;
     public var removeButton: Button;
@@ -59,9 +60,8 @@ public class RolePanel extends CustomNode {
                     spacing: 5
                     hpos: HPos.RIGHT
                     content: [
-                        rolePicker = XPicker {
+                        rolePicker = ChoiceBox {
                             disable: bind (user == null)
-                            pickerType: XPickerType.DROP_DOWN
                             items: [RoleEnum.getLabels()]
                         }
                         addButton = Button {

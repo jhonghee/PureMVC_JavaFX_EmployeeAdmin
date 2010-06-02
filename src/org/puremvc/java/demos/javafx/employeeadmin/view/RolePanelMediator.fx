@@ -70,15 +70,14 @@ public class RolePanelMediator extends Mediator {
 
     override function onRegister(): Void {
         view.listView.onMouseClicked = function (event: MouseEvent) {
-            view.rolePicker.selectItem(RoleEnum.NONE_SELECTED.getLabel());
+            view.rolePicker.select(RoleEnum.NONE_SELECTED.getValue()+1);
             view.selectedRole = RoleEnum.getEnumByLabel(view.listView.selectedItem as String);
         }
-        view.rolePicker.onIndexChange = function (index: Integer) {
+        view.addButton.action = function () {
             view.selectedRole = null;
             view.listView.clearSelection();
             view.selectedRole = RoleEnum.getEnumByLabel(view.rolePicker.selectedItem as String);
-        }
-        view.addButton.action = function () {
+
             onAddRole(view.user, view.selectedRole);
         }
         view.removeButton.action = function () {
@@ -105,7 +104,7 @@ public class RolePanelMediator extends Mediator {
     }
 
     function reset(): Void {
-        view.rolePicker.selectItem(RoleEnum.NONE_SELECTED.getLabel());
+        view.rolePicker.select(RoleEnum.NONE_SELECTED.getValue() + 1);
     }
 
 }

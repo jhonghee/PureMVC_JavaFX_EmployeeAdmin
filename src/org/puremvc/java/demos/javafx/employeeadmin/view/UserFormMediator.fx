@@ -50,9 +50,7 @@ public class UserFormMediator extends Mediator {
     }
 
     override function onRegister(): Void {
-        view.departmentField.onIndexChange = function (index: Integer) {
-            view.department = DeptEnum.getEnumByLabel(view.departmentField.selectedItem as String);
-        }
+
         view.updateButton.action = function () {
             view.user = new UserVO(
             view.usernameField.text,
@@ -80,12 +78,16 @@ public class UserFormMediator extends Mediator {
     }
 
     function onAdd(user: UserVO): Void {
+        view.department = DeptEnum.getEnumByLabel(view.departmentField.selectedItem as String);
+
         userProxy.addItem(user);
         sendNotification(ApplicationFacade.USER_ADDED, user);
         reset();
     }
 
     function onUpdate(user: UserVO): Void {
+        view.department = DeptEnum.getEnumByLabel(view.departmentField.selectedItem as String);
+
         userProxy.updateItem(user);
         sendNotification(ApplicationFacade.USER_UPDATED, user);
         reset();
@@ -100,7 +102,7 @@ public class UserFormMediator extends Mediator {
         view.password = "";
         view.confirmed = "";
         view.department = DeptEnum.NONE_SELECTED;
-        view.departmentField.selectItem(DeptEnum.NONE_SELECTED.getLabel());
+        view.departmentField.select(DeptEnum.NONE_SELECTED.getValue());
     }
 
     function setUser(user: UserVO, mode: String): Void {
@@ -114,7 +116,7 @@ public class UserFormMediator extends Mediator {
         view.department = user.getDepartment();
         view.mode = mode;
         // Unfortunately, XPicker does not have bindable property.
-        view.departmentField.selectItem(user.getDepartment().getLabel());
+        view.departmentField.select(user.getDepartment().getValue());
     }
 
 }

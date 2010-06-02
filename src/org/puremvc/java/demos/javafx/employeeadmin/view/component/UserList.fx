@@ -15,13 +15,12 @@ import org.jfxtras.ext.swing.table.ObjectSequenceTableModel;
 import org.puremvc.java.demos.javafx.employeeadmin.model.vo.UserVO;
 import org.jfxtras.ext.swing.table.Row;
 import org.jfxtras.ext.swing.table.StringCell;
-import org.jfxtras.ext.swing.table.ListSelectionMode;
 import javafx.geometry.HPos;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
-import javafx.ext.swing.SwingScrollPane;
 import javafx.scene.layout.LayoutInfo;
 import javafx.scene.paint.Color;
+import org.jfxtras.ext.swing.table.ListSelectionMode;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -58,9 +57,8 @@ public class UserList extends CustomNode {
                         }
                     ]
                 }
-                SwingScrollPane {
-                    layoutInfo: LayoutInfo { width: 580 height: 200 }
-                    view: swingTable = XSwingTable {
+                    swingTable = XSwingTable {
+                        layoutInfo: LayoutInfo { width: 580 height: 200 }
                         tableModel: ObjectSequenceTableModel {
                             override function transformEntry(entry) {
                                 def userVO: UserVO = entry as UserVO;
@@ -80,7 +78,7 @@ public class UserList extends CustomNode {
                         preferredColumnWidths: [100, 100, 100, 200, 100]
                         rowSelectionMode: ListSelectionMode.SINGLE_SELECTION
                     }
-                }
+                
                 HBox {
                     width: bind userListNode.width
                     spacing: 5

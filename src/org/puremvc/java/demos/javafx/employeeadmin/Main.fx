@@ -25,7 +25,7 @@ function run() {
     var mainFrame:MainFrame = MainFrame {
             title:   "PureMVC JavaFX Demo: EmployeeAdmin"
             width: 620
-            height: 660
+            height: 550
             scene: Scene {
                 fill: LinearGradient {
                     startX: 0.0, startY: 1.0, endX: 0.0, endY: 0.0,

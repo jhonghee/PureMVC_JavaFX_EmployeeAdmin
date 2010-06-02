@@ -11,9 +11,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextBox;
-import org.jfxtras.scene.control.XPicker;
-import org.jfxtras.scene.control.XPickerType;
-import org.jfxtras.scene.control.XPasswordBox;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Tile;
@@ -23,6 +20,9 @@ import java.lang.String;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.puremvc.java.demos.javafx.employeeadmin.view.UserFormMediator;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordBox;
+import javafx.scene.layout.LayoutInfo;
 
 /**
  * @author Jhonghee Park @ Seldon Systems, Inc.
@@ -36,9 +36,9 @@ public class UserForm extends CustomNode {
     public var lnameField: TextBox;
     public var emailField: TextBox;
     public var usernameField: TextBox;
-    public var passwordField: XPasswordBox;
-    public var confirmedPasswordField: XPasswordBox;
-    public var departmentField: XPicker;
+    public var passwordField: PasswordBox;
+    public var confirmedPasswordField: PasswordBox;
+    public var departmentField: ChoiceBox;
     var userForm: VBox;
     // Mediators and models
     public var user: UserVO;
@@ -71,10 +71,12 @@ public class UserForm extends CustomNode {
                     ]
                 }
                 Tile {
+                    layoutInfo: LayoutInfo { width: 280 height: 185 }
                     disable: bind if (user == null) true else false
                     columns: 2
                     rows: 7
                     vgap: 3
+                    nodeHPos:HPos.LEFT
                     content: [
                         // First name
                         Label {
@@ -109,22 +111,21 @@ public class UserForm extends CustomNode {
                         Label {
                             text: "Password"
                         }
-                        passwordField = XPasswordBox {
+                        passwordField = PasswordBox {
                             text: bind password with inverse
                         }
                         // Confirm password
                         Label {
                             text: "Confirm Password"
                         }
-                        confirmedPasswordField = XPasswordBox {
+                        confirmedPasswordField =  PasswordBox {
                             text: bind confirmed with inverse
                         }
                         // Department
                         Label {
                             text: "Department"
                         }
-                        departmentField = XPicker {
-                            pickerType: XPickerType.DROP_DOWN
+                        departmentField = ChoiceBox {
                             items: [DeptEnum.getLabels()]
                         }
                     ]
