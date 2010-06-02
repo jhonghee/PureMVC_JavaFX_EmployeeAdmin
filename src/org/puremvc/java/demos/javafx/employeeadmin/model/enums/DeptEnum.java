@@ -16,10 +16,10 @@ public enum DeptEnum {
 
     NONE_SELECTED ("--None Selected--", -1),
     ACCT ("Accounting", 0),
-    SALES ("Sales", 1),
-    PLANT ("Plant", 2),
-    SHIPPING ("Shipping", 3),
-    QC ("Quality Control", 4);
+    PLANT ("Plant", 1),
+    QC ("Quality Control", 2),
+    SALES ("Sales", 3),
+    SHIPPING ("Shipping", 4);
 
     private static final Map<String, DeptEnum> enumMap = new TreeMap<String, DeptEnum>();
     static {

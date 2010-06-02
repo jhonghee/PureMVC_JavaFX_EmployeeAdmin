@@ -102,7 +102,7 @@ public class UserFormMediator extends Mediator {
         view.password = "";
         view.confirmed = "";
         view.department = DeptEnum.NONE_SELECTED;
-        view.departmentField.select(DeptEnum.NONE_SELECTED.getValue());
+        view.departmentField.select(DeptEnum.NONE_SELECTED.getValue() + 1);
     }
 
     function setUser(user: UserVO, mode: String): Void {
@@ -116,7 +116,7 @@ public class UserFormMediator extends Mediator {
         view.department = user.getDepartment();
         view.mode = mode;
         // Unfortunately, XPicker does not have bindable property.
-        view.departmentField.select(user.getDepartment().getValue());
+        view.departmentField.select(user.getDepartment().getValue() + 1);
     }
 
 }
